@@ -24,6 +24,7 @@ export class UserListComponent {
   }
 
   async getUserList () {
+    this.filterText = "";
     this.users = await this.userService.getUsers();
   }
 

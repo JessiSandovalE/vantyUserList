@@ -1,6 +1,7 @@
 <section>
   <app-filter-box (filterText)="filterUser($event)"/>
 
+  <h1 class="title">Listado de usuarios</h1>
   <ul>
     @for (user of users | filter: filterText  ; track user.id) {
     <li>
