@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { UserServiceService } from '../../services/user-service.service';
+import { FilterBoxComponent } from '../filter-box/filter-box.component';
+import { NameFilterPipe } from '../../pipes/text-filter.pipe';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [],
+  imports: [FilterBoxComponent, NameFilterPipe],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss'
 })
 export class UserListComponent {
+  @Input() searchFilter: string = "";
+  filterText: string = "";
 
   constructor(private userService:UserServiceService){}
 
@@ -23,7 +27,10 @@ export class UserListComponent {
     this.users = await this.userService.getUsers();
   }
 
-  fav(gameName: string){
-    alert
+  async filterUser (event: any) {
+    this.filterText = event;
   }
+
+
+
 }

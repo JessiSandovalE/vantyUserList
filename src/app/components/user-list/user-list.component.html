@@ -1,10 +1,15 @@
 <section>
+  <app-filter-box (filterText)="filterUser($event)"/>
+
   <ul>
-  @for (user of users; track user.id) {
-    <li (click)="fav(user.name)" >
+    @for (user of users | filter: filterText  ; track user.id) {
+    <li>
       <span>{{ user.name }} </span>
-      <span> {{user.email}} </span>
+      <span> {{ user.email }} </span>
     </li>
-  }
-</ul>
+    }
+  </ul>
+  <button (click)="getUserList()">
+    Recargar listado
+  </button>
 </section>
