@@ -1,7 +1,10 @@
 <section>
   <ul>
   @for (user of users; track user.id) {
-    <li> {{ user.name }} </li>
+    <li (click)="fav(user.name)" >
+      <span>{{ user.name }} </span>
+      <span> {{user.email}} </span>
+    </li>
   }
 </ul>
 </section>
